@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Gallery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white p-4 shadow-md">
+    <h1 class="text-2xl font-bold text-center">🎨 Prompt Gallery</h1>
+  </header>
+
+  <!-- Main container -->
+  <main class="p-6 max-w-6xl mx-auto">
+    <h2 class="text-xl font-semibold mb-4">Available Prompts</h2>
+    <div id="promptContainer" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Cards will load here -->
+    </div>
+  </main>
+
+  <script>
+    // ✅ You add prompts + uploaded image URLs here
+    const prompts = [
+    {
+        id: 1,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Retro vintage grainy but bright image of reference picture (20s) standing on a sleek, high-rise rooftop at night, overlooking a sprawling city skyline. He's wearing a tailored dark coat over a black turtleneck, with a subtle smirk and hands in pockets. The neon glow of distant buildings and soft, ambient architectural lighting create sophisticated highlights and deep shadows. The mood is enigmatic and powerful, evoking urban luxury and solitude. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_wxtno3wxtno3wxtn.png" // 👈 leave empty if no image
+      },
+      {
+        id: 2,
+        category: "portrait",
+        title: "Cinematic Portrait",
+        prompt: "bright image of reference picture (20s-30s) with a discerning expression, observing a modern art piece in a dimly lit, high-end art gallery. He is dressed in a contemporary dark blazer and a collared shirt, holding a glass of wine. The dramatic spotlight on the artwork casts subtle, artistic shadows across his face and the polished concrete floor. The mood is cultured and intriguing, blending art appreciation with an air of mystery. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["cinematic", "portrait"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_u6zbssu6zbssu6zb.png"  // 👈 Replace with your uploaded image link
+      },
+      {
+        id: 3,
+        category: "landscape",
+        title: "Mystical Forest",
+        prompt: "bright image of reference picture (30s) seated in the driver's seat of a luxurious, dark-colored sports car at night. His hands are casually on the steering wheel, and his face is illuminated by the soft, colored glow of the dashboard lights and passing city streetlights. He's wearing a dark, open-collared shirt, with a relaxed yet focused expression. The mood is cool and confident, evoking a sense of nocturnal adventure. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["forest", "mystical"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_w86g3nw86g3nw86g.png"
+      }, 
+      {
+        id: 4,
+        category: "landscape",
+        title: "Mystical Forest",
+        prompt: "bright image of reference picture (30s) seated at a dimly lit bar in an exclusive, modern lounge, a half-empty cocktail glass on the polished counter in front of him. He is dressed in a dark, impeccably styled suit, looking directly at the camera with an intense, captivating gaze. Subtly colored ambient lighting (e.g., deep blues or purples) creates a sophisticated atmosphere. The mood is alluring and seductive, evoking a high-stakes, glamorous setting. Prominent film grain, 4:5 aspect ratio",
+        tags: ["forest", "mystical"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_wbdgfywbdgfywbdg.png"
+      }, 
+      {
+        id: 5,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Retro vintage grainy but bright image of reference picture (20s) with a carefree, adventurous smile, dressed in loose, earthy clothing with a well-worn backpack. He's standing on a bustling street in an exotic, sun-drenched marketplace, surrounded by colorful textiles, spices, and local vendors. The lighting is warm and vibrant, with dappled sunlight and deep shadows from awnings. The mood is energetic and curious, evoking a sense of wanderlust and cultural immersion. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_jttc7djttc7djttc.png" // 👈 leave empty if no image
+      },
+      {
+        id: 21,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Retro vintage grainy but bright image of reference picture (30s) with a stern, world-weary expression, wearing a rumpled trench coat and fedora. He's seated in a dimly lit, smoky private investigator's office, with rain streaking down the large window behind him. A half-empty whiskey glass and scattered papers are on his desk. The lighting is high contrast, with dramatic shadows and a single shaft of light cutting through the gloom. The mood is gritty and mysterious, evoking classic film noir. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_58re2j58re2j58re.png" // 👈 leave empty if no image
+      },
+      {
+        id: 7,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Retro vintage grainy but bright image of reference picture (20s) with a thoughtful, scholarly expression, wearing tweed jacket and spectacles. He's in a grand, oak-paneled library, surrounded by towering bookshelves filled with old books. He holds an open book in his hands, gazing out a large, arched window. The lighting is soft and natural, with beams of light illuminating dust motes in the air. The mood is intellectual and contemplative, evoking wisdom and quiet study. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_ynrui8ynrui8ynru.png" // 👈 leave empty if no image
+      },
+      {
+        id: 8,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Retro vintage grainy but bright image of reference picture (30s-40s) cuddled with a partner on a plush rug in front of a roaring fireplace, sipping from mugs. Soft blankets are draped around them, and the room is filled with warm, flickering light and deep, inviting shadows. The mood is intimate and comforting, evoking quiet domestic bliss. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_urytpourytpouryt.png" // 👈 leave empty if no image
+      },
+      {
+        id: 9,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Retro vintage grainy but bright image of reference picture (20s) sharing an umbrella with a partner on a bustling, rain-slicked city street at dusk. They are laughing, eyes locked, with the city lights blurring into colorful bokeh in the background. Reflections shimmer on the wet pavement. The mood is spontaneous and joyful, evoking an unexpected urban romance. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_w80iscw80iscw80i.png" // 👈 leave empty if no image
+      },
+      {
+        id: 10,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) on a deserted beach at sunset, on bended knee, presenting a ring to a partner. The sky is ablaze with vibrant oranges and pinks, reflected on the wet sand as waves gently lap the shore. The mood is emotional and hopeful, capturing a momentous, heartfelt proposal. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_klg7tuklg7tuklg7.png" // 👈 leave empty if no image
+      },
+      {
+        id: 11,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) standing confidently against a graffiti-covered brick wall in a narrow alleyway. He is wearing a stylish leather jacket, dark jeans, and a casual t-shirt, with one hand in his pocket and a slightly defiant expression. Harsh, directional light from an unseen streetlamp casts long, dramatic shadows. The mood is cool and rebellious, evoking a modern urban vibe. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_9n60v09n60v09n60.png" // 👈 leave empty if no image
+      },
+      {
+        id: 12,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) posing with understated elegance in a minimalist, open-plan architectural space with large concrete walls and floor-to-ceiling windows. He is dressed in a well-tailored, monochromatic suit, looking thoughtfully out a window. Soft, diffused natural light illuminates one side of his face, creating subtle highlights and shadows. The mood is sophisticated and contemplative, evoking a clean, modern aesthetic. Prominent film grain, 4:5 aspect ratio",
+        tags: ["sci-fi", "city"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_b4zlepb4zlepb4zl.png" // 👈 leave empty if no image
+      },
+      {
+        id: 13,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) with an artistic, slightly melancholic expression, standing in a studio with large windows. Complex, geometric shadows from window frames or blinds fall across his face and body. He is wearing a loose-fitting, artistic shirt and dark trousers, with a subtle prop like a small sculpture or a sketchbook in his hand. The lighting is high contrast, focusing on the interplay of light and shadow. The mood is thoughtful and visually striking, emphasizing artistic composition. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_ia0k98ia0k98ia0k.png" // 👈 leave empty if no image
+      },
+      {
+        id: 14,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) leaning casually against a classic vintage car (e.g., a '60s Mustang) on a quiet, sun-drenched suburban street. He is dressed in a crisp white shirt, rolled-up sleeves, and chinos, with a confident, easy smile. The late afternoon sun casts warm, long shadows. The mood is timeless and effortlessly cool, evoking a classic American dream aesthetic. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_pc5x9spc5x9spc5x.png" // 👈 leave empty if no image
+      },
+      {
+        id: 15,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) gently plucking a single delicate wildflower from a vibrant meadow, with a tender, focused expression. He is dressed in soft, light-colored linen, and the setting sun casts a warm, ethereal glow over the field. The mood is serene and appreciative of nature's beauty. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_qbxnrrqbxnrrqbxn.png" // 👈 leave empty if no image
+      },
+      {
+        id: 16,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) reaching through overgrown foliage in a forgotten, walled secret garden to carefully pick a blooming rose. His expression is one of wonder and slight mischief. He is wearing vintage-inspired workwear or a simple shirt with rolled-up sleeves. Dappled sunlight breaks through the dense canopy, creating dramatic light and shadow. The mood is mysterious and enchanting, evoking hidden beauty. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_sufmvosufmvosufm.png" // 👈 leave empty if no image
+      },
+      {
+        id: 17,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Retro vintage grainy but bright image of reference picture (20s) standing by a dramatic, windswept coastline, thoughtfully holding a single, resilient bloom (e.g., a thistle or sea poppy) against the backdrop of a vast, moody ocean. His expression is artistic and introspective. He is wearing a simple, open-collared shirt, perhaps with a slight breeze catching it. The lighting is dramatic and natural, with hints of a stormy sky or a powerful sunset. The mood is poetic and symbolic, linking human emotion with wild nature. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_nqlhtanqlhtanqlh.png" // 👈 leave empty if no image
+      },
+      {
+        id: 18,
+        category: "portrait",
+        title: "Cinematic Portrait",
+        prompt: "Retro vintage grainy but bright image of a reference picture (20s) with wind-blown hair and a joyful, uninhibited smile, caught mid-laugh. He's standing on a cliff edge overlooking a vast, stormy ocean, with the wind whipping his casual shirt. His arms are outstretched, embracing the moment. The lighting is dramatic, with moody clouds and glimpses of golden sunlight breaking through. Focus on the raw emotion and the powerful, romanticized natural environment. High contrast, strong film grain, 4:5 aspect ratio.",
+        tags: ["cinematic", "portrait"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/p1.png"  // 👈 Replace with your uploaded image link
+      },
+       {
+        id: 19,
+        category: "fantasy",
+        title: "Dragon Castle",
+        prompt: "Retro vintage grainy but bright image of reference pricture (20s) with a weathered face and kind eyes, wearing a simple flannel shirt and work pants. He's standing alone in a vast, golden field during late autumn, gazing out towards the horizon. A lone, gnarled tree is in the distance. The lighting is warm with a golden hour glow, casting long, dramatic shadows. The mood is serene and introspective, evoking a sense of enduring peace and connection to nature. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["dragon", "castle", "fantasy"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_gy6mgpgy6mgpgy6m.png"
+      },
+      {
+        id: 20,
+        category: "landscape",
+        title: "Mystical Forest",
+        prompt: "Retro vintage grainy but bright image of reference pricture (20s-30s) with paint-splattered hands and an intense, focused expression. He's in his messy studio, bathed in the dramatic, directional light from a large window. He holds a paintbrush, looking at a half-finished canvas. The room is filled with creative chaos, art supplies, and warm, dusty sunlight creating beautiful highlights and deep shadows. Evokes the raw energy of creation, a moody, passionate artistic spirit. Image size 4:5.",
+        tags: ["forest", "mystical"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_sfjytosfjytosfjy.png"
+      },
+      {
+        id: 21,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Retro vintage grainy but bright image of reference picture (20s) with a strong, determined gaze, covered in honest sweat and wearing sturdy work overalls. He's on a construction site, silhouetted against a setting sun, taking a moment to survey his work. Tools are scattered around him, and the framework of a building rises in the background. The lighting is warm and dusty, with a dramatic glow from the low sun. The mood is resilient and proud, celebrating hard work and craftsmanship. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "file:///C:/Users/jaspe/Downloads/Gemini_Generated_Image_cqpoghcqpoghcqpo.png" // 👈 leave empty if no image
+      }
+    ];
+
+    // ✅ Function to load prompts into UI
+    function loadPrompts() {
+      const container = document.getElementById("promptContainer");
+      container.innerHTML = "";
+
+      prompts.forEach(prompt => {
+        const card = document.createElement("div");
+        card.className = "bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition";
+
+        card.innerHTML = `
+          <div class="aspect-[4/5] bg-gray-200 flex items-center justify-center">
+            ${prompt.imageUrl 
+              ? `<img src="${prompt.imageUrl}" alt="${prompt.title}" class="w-full h-full object-cover">` 
+              : `<span class="text-gray-500">No Image Available</span>`
+            }
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold mb-2">${prompt.title}</h3>
+            <p class="text-gray-700 text-sm mb-3">${prompt.prompt}</p>
+            <div class="flex flex-wrap gap-2">
+              ${prompt.tags.map(tag => 
+                `<span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">#${tag}</span>`
+              ).join("")}
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // ✅ Run on page load
+    loadPrompts();
+  </script>
+
+</body>
+</html>
