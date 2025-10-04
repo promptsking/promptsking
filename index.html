@@ -37,6 +37,22 @@
     // ✅ You add prompts + uploaded image URLs here
     const prompts = [
       {
+        id: 30,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Ultra realistic photo of the attached image seated at a rustic indoor café table with warm Edison lights and brick walls in the background.She has long hair tied up in a loose bun wearing round spectacles and a cream-colored oversized sweater tucked into high-waisted jeans.A latte cup rests on the wooden table beside an open notebook.Her posture is relaxed, slightly leaning forward, smiling softly while looking out the window. The background shows blurred people in the café, hanging plants, and warm golden lighting for a cozy, intimate feel.Her height is 5 feet 4 inches. Keep all facial details authentic for a raw candid vibe.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p24.jpg?raw=true" // 👈 leave empty if no image
+      },
+      {
+        id: 27,
+        category: "sci-fi",
+        title: "Futuristic City",
+        prompt: "Produce a clean, realistic edit of the man exact same face and hairstyle from the uploaded photo.He is casually seated on the hood of a black Toyota Fortuner with the plate Yasin-Ai.His outfit is a simple oversized black-and-white baggy shirt paired with black-and-white sneakers. His left hand rests in his pocket while his right hand rests lightly on his knee. Behind him, mountains are partially hidden under a veil of thick fog.",
+        tags: ["sci-fi", "city"],
+        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p26.jpg?raw=true" // 👈 leave empty if no image
+      },
+      {
         id: 26,
         category: "sci-fi",
         title: "Futuristic City",
@@ -181,6 +197,14 @@
         imageUrl: "https://github.com/promptsking/promptsking/blob/main/p18.png?raw=true"  // 👈 Replace with your uploaded image link
       },
       {
+        id: 19,
+        category: "fantasy",
+        title: "Dragon Castle",
+        prompt: "Retro vintage grainy but bright image of reference pricture (20s) with a weathered face and kind eyes, wearing a simple flannel shirt and work pants. He's standing alone in a vast, golden field during late autumn, gazing out towards the horizon. A lone, gnarled tree is in the distance. The lighting is warm with a golden hour glow, casting long, dramatic shadows. The mood is serene and introspective, evoking a sense of enduring peace and connection to nature. Prominent film grain, 4:5 aspect ratio.",
+        tags: ["dragon", "castle", "fantasy"],
+        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p19.png?raw=true"
+      },
+      {
         id: 20,
         category: "landscape",
         title: "Mystical Forest",
@@ -196,14 +220,6 @@
         tags: ["sci-fi", "city"],
         imageUrl: "https://github.com/promptsking/promptsking/blob/main/p21.png?raw=true" // 👈 leave empty if no image
       },
-      {
-        id: 27,
-        category: "sci-fi",
-        title: "Futuristic City",
-        prompt: "Produce a clean, realistic edit of the man exact same face and hairstyle from the uploaded photo.He is casually seated on the hood of a black Toyota Fortuner with the plate Yasin-Ai.His outfit is a simple oversized black-and-white baggy shirt paired with black-and-white sneakers. His left hand rests in his pocket while his right hand rests lightly on his knee. Behind him, mountains are partially hidden under a veil of thick fog.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p26.jpg?raw=true" // 👈 leave empty if no image
-      }
     ];
 
     // ✅ Function to load prompts into UI
@@ -242,6 +258,7 @@
 
 </body>
 </html>
+
 
 
 
