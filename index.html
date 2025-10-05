@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prompt Gallery</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google tag (gtag.js) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atmospheric Prompt Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CDPG2RXQPF"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -16,326 +15,243 @@
   gtag('config', 'G-CDPG2RXQPF');
 </script>
 
-  
-</head>
-<body class="bg-gray-100 font-sans">
-
-  <!-- Header -->
-  <header class="bg-blue-600 text-white p-4 shadow-md">
-    <h1 class="text-2xl font-bold text-center">🎨 Prompt Gallery</h1>
-  </header>
-
-  <!-- Main container -->
-  <main class="p-6 max-w-6xl mx-auto">
-    <h2 class="text-xl font-semibold mb-4">Available Prompts</h2>
-    <div id="promptContainer" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <!-- Cards will load here -->
-    </div>
-  </main>
-
-  <script>
-    // ✅ You add prompts + uploaded image URLs here
-    const prompts = [
-      {
-        id: 36,
-        category: "sci-fi",
-        title: "",
-        prompt: "A Hyper-realistic 8k portrait of a young woman [use same face as uploaded photo] sitting barefoot on the edge of a rustic boat in calm blue waters. Lotuses all over the water, romantically environment. Her head tilted side in a gentle smile. She's dressed in a beautiful sari, with a rich red blouse embroidered with a gold floral pattern. The skirt of the sari is a red, with intricate golden embroidery at the hem. Her hair is pulled up in a relaxed bun, and she wears stunning gold earrings that complement her traditional look. The warm, soft lighting create a serene and elegant atmosphere.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/36.jpg?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 37,
-        category: "portrait",
-        title: "",
-        prompt: "Create a retro, vintage- inspired image -grainy yet bright - based on the reference picture. The girl should be draped in a perfect red, Pinterest-style aesthetic retro saree. The vibe must capture the essence of a 90s movie brown -haired baddie, with short wavy curly hair and a small flower tucked visibly into her hair, enhanced by a windy, romantic atmosphere. She stands against a solid wall, where deep shadows and dramatic contrasts add mystery and artistry to the scene, creating a moody yet enchanting cinematic effect. I want same face as I uploaded no alternation 100 percent same.",
-        tags: ["cinematic", "portrait"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/37.jpg?raw=true"  // 👈 Replace with your uploaded image link
-      },
-      {
-        id: 38,
-        category: "landscape",
-        title: "",
-        prompt: "Hyper-realistic overhead 9:16 close-up of myself with glasses, playfully leaning against an ivy-covered stone wall of an old countryside cottage during golden hour. I'm laughing with my head slightly tilted down, one hand brushing away a dangling vine, The flowering vines are in full bloom with orange, magenta, and lavender hues, softly blurred in the foreground.",
-        tags: ["forest", "mystical"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/38.jpg?raw=true"
-      }, 
-      {
-        id: 39,
-        category: "landscape",
-        title: "",
-        prompt: "Black and white fine art portrait of a young woman, short wavy slightly messy hair framing her delicate face, smooth fair skin, wearing an oversized white shirt. Pose: sitting with one hand resting gently under her chin, looking at the camera with a calm and thoughtful expression. Studio setting with plain grey backdrop, soft cinematic lighting, minimalistic composition. Ultra realistic, sharp facial details, natural textures, elegant and sophisticated style. Professional photography, 8K quality.",
-        tags: ["forest", "mystical"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/39.jpg?raw=true"
-      }, 
-      {
-        id: 33,
-        category: "sci-fi",
-        title: "",
-        prompt: "Ultra realistic, high resolution cinematic image of a person walking indoors with purpose. Face with the face from the uploaded image, keeping the facial features exactly the same. He is dressed in a striking red blazer with white buttons, paired with a white shirt that is open at the chest, He wears black fitted trousers with a red leather belt that matches the blazer In his left hand, he carries a sleek black folder, adding a professional touch. The background is a softly blurred elegant architectural interior with soft ambient lighting, creating depth and focus on the subject. The lighting highlights the texture of the fabric, the glossiness the hair, and the calm, determined expression on his face. The overall mood is cinematic, stylish, bold, and powerful",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/33.jpg?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 34,
-        category: "portrait",
-        title: "",
-        prompt: "Wide-angle GoPro-style shot from a high, symmetrical bird's-eye perspective. [Reference man from the photo] stands in black sunglasses and a sleek black suit, looking casually into the camera while holding his face with his index finger and thumb in a confident gesture.Around him, glamorous supermodels and enthusiastic fans reach out, touching his arms and shoulders, enhancing his magnetic presence. Below the frame, P paparazzi flashes and crowded journalists with cameras create a chaotic yet dramatic atmosphere.The ultra-wide GoPro lens exaggerates erspective, making the scene feel immersive, dynamic, and larger-than-life like a raw, energetic capture from the middle S celebrity madness.",
-        tags: ["cinematic", "portrait"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/34.jpg?raw=true"  // 👈 Replace with your uploaded image link
-      },
-      {
-        id: 35,
-        category: "landscape",
-        title: "",
-        prompt: "Uitra realistic, 8K resolution cinematic image of a person crouching beside a owerful black horse in a snow-covered mountainous landscape. Face with the face from the uploaded image, keeping the facial features exactly the same. wavy hair, and wears dark sunglasses, a cozy black sweater, grey cargo pants, and black boots. He crouches with one knee bent, holding the reins of the horse with a relaxed yet confident posture. The horse is muscular, with a glossy jet-black coat, flowing mane, and expressive eyes, wearing a simple leather halter. Snow blankets the ground with footprints and scattered rocks visible. In the background, soft-focus snow-covered hills, pine trees, and distant mountain peaks stretch under a Clear blue sky Snowflakes gently fall around them, adding depth and softness to the scene. The lighting is soft and natural, highlighting details like the texture of the snow, fabric folds, and hair strands. The overall mood is calm, adventurous, and majestic, evoking a sense of freedom and harmony with nature.",
-        tags: ["forest", "mystical"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/35.jpg?raw=true"
-      }, 
-      {
-        id: 31,
-        category: "sci-fi",
-        title: "",
-        prompt: "Create this image in a portrait of a young woman standing among pink roses, cinematic atmosphere, pink-white tones, soft natural light, her long curly black hair blowing in the wind partially, wearing elegant light bink silk saree with a subtle sheen.detailed textures, ethereal mood, high-fashion magazine style photography, ultra realistic, 85mm lens, depth of field, 8k.Use the uploaded image for the girl's face -no face distortion,no loss of identity,no face morphing.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p25.jpg?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 30,
-        category: "sci-fi",
-        title: "",
-        prompt: "Ultra realistic photo of the attached image seated at a rustic indoor café table with warm Edison lights and brick walls in the background.She has long hair tied up in a loose bun wearing round spectacles and a cream-colored oversized sweater tucked into high-waisted jeans.A latte cup rests on the wooden table beside an open notebook.Her posture is relaxed, slightly leaning forward, smiling softly while looking out the window. The background shows blurred people in the café, hanging plants, and warm golden lighting for a cozy, intimate feel.Her height is 5 feet 4 inches. Keep all facial details authentic for a raw candid vibe.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p24.jpg?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 27,
-        category: "sci-fi",
-        title: "",
-        prompt: "Produce a clean, realistic edit of the man exact same face and hairstyle from the uploaded photo.He is casually seated on the hood of a black Toyota Fortuner with the plate Yasin-Ai.His outfit is a simple oversized black-and-white baggy shirt paired with black-and-white sneakers. His left hand rests in his pocket while his right hand rests lightly on his knee. Behind him, mountains are partially hidden under a veil of thick fog.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p26.jpg?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 26,
-        category: "sci-fi",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference picture (20s) standing on a sleek, high-rise rooftop at night, overlooking a sprawling city skyline. He's wearing a tailored dark coat over a black turtleneck, with a subtle smirk and hands in pockets. The neon glow of distant buildings and soft, ambient architectural lighting create sophisticated highlights and deep shadows. The mood is enigmatic and powerful, evoking urban luxury and solitude. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p1%20(2).png?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 2,
-        category: "portrait",
-        title: "",
-        prompt: "bright image of reference picture (20s-30s) with a discerning expression, observing a modern art piece in a dimly lit, high-end art gallery. He is dressed in a contemporary dark blazer and a collared shirt, holding a glass of wine. The dramatic spotlight on the artwork casts subtle, artistic shadows across his face and the polished concrete floor. The mood is cultured and intriguing, blending art appreciation with an air of mystery. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["cinematic", "portrait"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p2.png?raw=true"  // 👈 Replace with your uploaded image link
-      },
-      {
-        id: 3,
-        category: "landscape",
-        title: "",
-        prompt: "bright image of reference picture (30s) seated in the driver's seat of a luxurious, dark-colored sports car at night. His hands are casually on the steering wheel, and his face is illuminated by the soft, colored glow of the dashboard lights and passing city streetlights. He's wearing a dark, open-collared shirt, with a relaxed yet focused expression. The mood is cool and confident, evoking a sense of nocturnal adventure. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["forest", "mystical"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p3.png?raw=true"
-      }, 
-      {
-        id: 4,
-        category: "landscape",
-        title: "",
-        prompt: "bright image of reference picture (30s) seated at a dimly lit bar in an exclusive, modern lounge, a half-empty cocktail glass on the polished counter in front of him. He is dressed in a dark, impeccably styled suit, looking directly at the camera with an intense, captivating gaze. Subtly colored ambient lighting (e.g., deep blues or purples) creates a sophisticated atmosphere. The mood is alluring and seductive, evoking a high-stakes, glamorous setting. Prominent film grain, 4:5 aspect ratio",
-        tags: ["forest", "mystical"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p3.png?raw=true"
-      }, 
-      {
-        id: 5,
-        category: "sci-fi",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference picture (20s) with a carefree, adventurous smile, dressed in loose, earthy clothing with a well-worn backpack. He's standing on a bustling street in an exotic, sun-drenched marketplace, surrounded by colorful textiles, spices, and local vendors. The lighting is warm and vibrant, with dappled sunlight and deep shadows from awnings. The mood is energetic and curious, evoking a sense of wanderlust and cultural immersion. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p5.png?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 21,
-        category: "sci-fi",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference picture (30s) with a stern, world-weary expression, wearing a rumpled trench coat and fedora. He's seated in a dimly lit, smoky private investigator's office, with rain streaking down the large window behind him. A half-empty whiskey glass and scattered papers are on his desk. The lighting is high contrast, with dramatic shadows and a single shaft of light cutting through the gloom. The mood is gritty and mysterious, evoking classic film noir. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p6.png?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 7,
-        category: "sci-fi",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference picture (20s) with a thoughtful, scholarly expression, wearing tweed jacket and spectacles. He's in a grand, oak-paneled library, surrounded by towering bookshelves filled with old books. He holds an open book in his hands, gazing out a large, arched window. The lighting is soft and natural, with beams of light illuminating dust motes in the air. The mood is intellectual and contemplative, evoking wisdom and quiet study. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p7.png?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 8,
-        category: "sci-fi",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference picture (30s-40s) cuddled with a partner on a plush rug in front of a roaring fireplace, sipping from mugs. Soft blankets are draped around them, and the room is filled with warm, flickering light and deep, inviting shadows. The mood is intimate and comforting, evoking quiet domestic bliss. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p8.png?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 9,
-        category: "sci-fi",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference picture (20s) sharing an umbrella with a partner on a bustling, rain-slicked city street at dusk. They are laughing, eyes locked, with the city lights blurring into colorful bokeh in the background. Reflections shimmer on the wet pavement. The mood is spontaneous and joyful, evoking an unexpected urban romance. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p9.png?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 10,
-        category: "sci-fi",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) on a deserted beach at sunset, on bended knee, presenting a ring to a partner. The sky is ablaze with vibrant oranges and pinks, reflected on the wet sand as waves gently lap the shore. The mood is emotional and hopeful, capturing a momentous, heartfelt proposal. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p10.png?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 11,
-        category: "sci-fi",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) standing confidently against a graffiti-covered brick wall in a narrow alleyway. He is wearing a stylish leather jacket, dark jeans, and a casual t-shirt, with one hand in his pocket and a slightly defiant expression. Harsh, directional light from an unseen streetlamp casts long, dramatic shadows. The mood is cool and rebellious, evoking a modern urban vibe. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p11.png?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 12,
-        category: "sci-fi",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) posing with understated elegance in a minimalist, open-plan architectural space with large concrete walls and floor-to-ceiling windows. He is dressed in a well-tailored, monochromatic suit, looking thoughtfully out a window. Soft, diffused natural light illuminates one side of his face, creating subtle highlights and shadows. The mood is sophisticated and contemplative, evoking a clean, modern aesthetic. Prominent film grain, 4:5 aspect ratio",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p12.png?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 13,
-        category: "sci-fi",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) with an artistic, slightly melancholic expression, standing in a studio with large windows. Complex, geometric shadows from window frames or blinds fall across his face and body. He is wearing a loose-fitting, artistic shirt and dark trousers, with a subtle prop like a small sculpture or a sketchbook in his hand. The lighting is high contrast, focusing on the interplay of light and shadow. The mood is thoughtful and visually striking, emphasizing artistic composition. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p13.png?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 14,
-        category: "sci-fi",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) leaning casually against a classic vintage car (e.g., a '60s Mustang) on a quiet, sun-drenched suburban street. He is dressed in a crisp white shirt, rolled-up sleeves, and chinos, with a confident, easy smile. The late afternoon sun casts warm, long shadows. The mood is timeless and effortlessly cool, evoking a classic American dream aesthetic. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p14.png?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 15,
-        category: "sci-fi",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) gently plucking a single delicate wildflower from a vibrant meadow, with a tender, focused expression. He is dressed in soft, light-colored linen, and the setting sun casts a warm, ethereal glow over the field. The mood is serene and appreciative of nature's beauty. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p15.png?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 16,
-        category: "sci-fi",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) reaching through overgrown foliage in a forgotten, walled secret garden to carefully pick a blooming rose. His expression is one of wonder and slight mischief. He is wearing vintage-inspired workwear or a simple shirt with rolled-up sleeves. Dappled sunlight breaks through the dense canopy, creating dramatic light and shadow. The mood is mysterious and enchanting, evoking hidden beauty. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p16.png?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 17,
-        category: "sci-fi",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference picture (20s) standing by a dramatic, windswept coastline, thoughtfully holding a single, resilient bloom (e.g., a thistle or sea poppy) against the backdrop of a vast, moody ocean. His expression is artistic and introspective. He is wearing a simple, open-collared shirt, perhaps with a slight breeze catching it. The lighting is dramatic and natural, with hints of a stormy sky or a powerful sunset. The mood is poetic and symbolic, linking human emotion with wild nature. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p17.png?raw=true" // 👈 leave empty if no image
-      },
-      {
-        id: 18,
-        category: "portrait",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of a reference picture (20s) with wind-blown hair and a joyful, uninhibited smile, caught mid-laugh. He's standing on a cliff edge overlooking a vast, stormy ocean, with the wind whipping his casual shirt. His arms are outstretched, embracing the moment. The lighting is dramatic, with moody clouds and glimpses of golden sunlight breaking through. Focus on the raw emotion and the powerful, romanticized natural environment. High contrast, strong film grain, 4:5 aspect ratio.",
-        tags: ["cinematic", "portrait"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p18.png?raw=true"  // 👈 Replace with your uploaded image link
-      },
-      {
-        id: 19,
-        category: "fantasy",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference pricture (20s) with a weathered face and kind eyes, wearing a simple flannel shirt and work pants. He's standing alone in a vast, golden field during late autumn, gazing out towards the horizon. A lone, gnarled tree is in the distance. The lighting is warm with a golden hour glow, casting long, dramatic shadows. The mood is serene and introspective, evoking a sense of enduring peace and connection to nature. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["dragon", "castle", "fantasy"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p19.png?raw=true"
-      },
-      {
-        id: 20,
-        category: "landscape",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference pricture (20s-30s) with paint-splattered hands and an intense, focused expression. He's in his messy studio, bathed in the dramatic, directional light from a large window. He holds a paintbrush, looking at a half-finished canvas. The room is filled with creative chaos, art supplies, and warm, dusty sunlight creating beautiful highlights and deep shadows. Evokes the raw energy of creation, a moody, passionate artistic spirit. Image size 4:5.",
-        tags: ["forest", "mystical"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p20.png?raw=true"
-      },
-      {
-        id: 21,
-        category: "sci-fi",
-        title: "",
-        prompt: "Retro vintage grainy but bright image of reference picture (20s) with a strong, determined gaze, covered in honest sweat and wearing sturdy work overalls. He's on a construction site, silhouetted against a setting sun, taking a moment to survey his work. Tools are scattered around him, and the framework of a building rises in the background. The lighting is warm and dusty, with a dramatic glow from the low sun. The mood is resilient and proud, celebrating hard work and craftsmanship. Prominent film grain, 4:5 aspect ratio.",
-        tags: ["sci-fi", "city"],
-        imageUrl: "https://github.com/promptsking/promptsking/blob/main/p21.png?raw=true" // 👈 leave empty if no image
-      },
-    ];
-
-    // ✅ Function to load prompts into UI
-    function loadPrompts() {
-      const container = document.getElementById("promptContainer");
-      container.innerHTML = "";
-
-      prompts.forEach(prompt => {
-        const card = document.createElement("div");
-        card.className = "bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition";
-
-        card.innerHTML = `
-          <div class="aspect-[4/5] bg-gray-200 flex items-center justify-center">
-            ${prompt.imageUrl 
-              ? `<img src="${prompt.imageUrl}" alt="${prompt.title}" class="w-full h-full object-cover">` 
-              : `<span class="text-gray-500">No Image Available</span>`
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-dark': '#0f0c29',       // Deep Indigo/Dark Violet
+                        'card-bg-light': '#1f2937', // Slightly lighter dark background
+                        'accent-sky': '#38bdf8',    // Sky 400 for Men/Green accent
+                        'accent-fuchsia': '#e879f9',// Fuchsia 400 for Women/Pink accent
+                    },
+                    boxShadow: {
+                        // Custom subtle glow effect for cards
+                        'light-glow': '0 0 5px rgba(255, 255, 255, 0.1), 0 0 15px rgba(50, 50, 255, 0.2)',
+                    }
+                }
             }
-          </div>
-          <div class="p-4">
-            <h3 class="text-lg font-bold mb-2">${prompt.title}</h3>
-            <p class="text-gray-700 text-sm mb-3">${prompt.prompt}</p>
-            <div class="flex flex-wrap gap-2">
-              ${prompt.tags.map(tag => 
-                `<span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">#${tag}</span>`
-              ).join("")}
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
+        }
+    </script>
 
-    // ✅ Run on page load
-    loadPrompts();
-  </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CDPG2RXQPF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-CDPG2RXQPF');
+    </script>
+    
+    <style>
+        /* Apply subtle backdrop blur for a glass/floating effect */
+        .glass-effect {
+            background-color: rgba(31, 41, 55, 0.5); /* Semi-transparent dark blue */
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Image hover effect */
+        .card:hover img {
+            opacity: 0.85;
+            transform: scale(1.05);
+            transition: all 500ms ease-out;
+        }
+        /* Style for the button ring offset to match the deep background */
+        .ring-offset-bg-dark {
+            --tw-ring-offset-color: #0f0c29;
+        }
+    </style>
+</head>
+<body class="bg-bg-dark font-sans text-white">
+
+    <header class="bg-gray-900 text-white p-6 shadow-2xl border-b border-gray-700">
+        <h1 class="text-4xl font-extrabold text-center tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-fuchsia-400">
+            Ai IMAGES PROMPTS 
+        </h1>
+    </header>
+
+    <main class="p-8 max-w-7xl mx-auto">
+        
+        <div class="mb-12 flex justify-center space-x-8">
+            <button onclick="filterPrompts('men')" class="px-12 py-4 text-xl font-bold rounded-xl shadow-lg transition duration-300 transform hover:scale-105 bg-accent-sky hover:bg-sky-500 text-bg-dark" id="filter-men">
+                🤵 MALE 
+            </button>
+            <button onclick="filterPrompts('girl')" class="px-12 py-4 text-xl font-bold rounded-xl shadow-lg transition duration-300 transform hover:scale-105 bg-accent-fuchsia hover:bg-fuchsia-500 text-bg-dark" id="filter-girl">
+                🌸 FEMALE 
+            </button>
+        </div>
+        
+        <h2 class="text-3xl font-light mb-10 text-gray-300 text-center border-b border-gray-700 pb-4" id="gallery-title">
+            Loading Content...
+        </h2>
+
+        <div id="promptContainer" class="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+            </div>
+    </main>
+
+    <script>
+        // Prompt Data (Kept the same for functionality)
+        const allPrompts = [
+            // WOMEN'S PROMPTS (gender: "girl")
+            { id: 36, category: "sci-fi", title: "Rustic Sari Portrait", prompt: "A Hyper-realistic 8k portrait of a young woman [use same face as uploaded photo] sitting barefoot on the edge of a rustic boat in calm blue waters. Lotuses all over the water, romantically environment. Her head tilted side in a gentle smile. She's dressed in a beautiful sari, with a rich red blouse embroidered with a gold floral pattern. The skirt of the sari is a red, with intricate golden embroidery at the hem. Her hair is pulled up in a relaxed bun, and she wears stunning gold earrings that complement her traditional look. The warm, soft lighting create a serene and elegant atmosphere.", tags: ["sci-fi", "portrait"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/36.jpg?raw=true", gender: "girl" },
+            { id: 37, category: "portrait", title: "Cinematic Retro Saree", prompt: "Create a retro, vintage- inspired image -grainy yet bright - based on the reference picture. The girl should be draped in a perfect red, Pinterest-style aesthetic retro saree. The vibe must capture the essence of a 90s movie brown -haired baddie, with short wavy curly hair and a small flower tucked visibly into her hair, enhanced by a windy, romantic atmosphere. She stands against a solid wall, where deep shadows and dramatic contrasts add mystery and artistry to the scene, creating a moody yet enchanting cinematic effect. I want same face as I uploaded no alternation 100 percent same.", tags: ["cinematic", "portrait"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/37.jpg?raw=true", gender: "girl" },
+            { id: 38, category: "landscape", title: "Golden Hour Cottage", prompt: "Hyper-realistic overhead 9:16 close-up of myself with glasses, playfully leaning against an ivy-covered stone wall of an old countryside cottage during golden hour. I'm laughing with my head slightly tilted down, one hand brushing away a dangling vine, The flowering vines are in full bloom with orange, magenta, and lavender hues, softly blurred in the foreground.", tags: ["golden-hour", "portrait"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/38.jpg?raw=true", gender: "girl" }, 
+            { id: 39, category: "landscape", title: "BW Fine Art Portrait", prompt: "Black and white fine art portrait of a young woman, short wavy slightly messy hair framing her delicate face, smooth fair skin, wearing an oversized white shirt. Pose: sitting with one hand resting gently under her chin, looking at the camera with a calm and thoughtful expression. Studio setting with plain grey backdrop, soft cinematic lighting, minimalistic composition. Ultra realistic, sharp facial details, natural textures, elegant and sophisticated style. Professional photography, 8K quality.", tags: ["fine-art", "bw", "portrait"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/39.jpg?raw=true", gender: "girl" }, 
+            { id: 31, category: "sci-fi", title: "Pink Rose Saree", prompt: "Create this image in a portrait of a young woman standing among pink roses, cinematic atmosphere, pink-white tones, soft natural light, her long curly black hair blowing in the wind partially, wearing elegant light bink silk saree with a subtle sheen.detailed textures, ethereal mood, high-fashion magazine style photography, ultra realistic, 85mm lens, depth of field, 8k.Use the uploaded image for the girl's face -no face distortion,no loss of identity,no face morphing.", tags: ["sci-fi", "ethereal"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p25.jpg?raw=true", gender: "girl" },
+            { id: 30, category: "sci-fi", title: "Cozy Cafe Portrait", prompt: "Ultra realistic photo of the attached image seated at a rustic indoor café table with warm Edison lights and brick walls in the background.She has long hair tied up in a loose bun wearing round spectacles and a cream-colored oversized sweater tucked into high-waisted jeans.A latte cup rests on the wooden table beside an open notebook.Her posture is relaxed, slightly leaning forward, smiling softly while looking out the window. The background shows blurred people in the café, hanging plants, and warm golden lighting for a cozy, intimate feel.Her height is 5 feet 4 inches. Keep all facial details authentic for a raw candid vibe.", tags: ["sci-fi", "candid"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p24.jpg?raw=true", gender: "girl" },
+            
+            // MEN'S PROMPTS (gender: "men")
+            { id: 33, category: "sci-fi", title: "Red Blazer Power Walk", prompt: "Ultra realistic, high resolution cinematic image of a person walking indoors with purpose. Face with the face from the uploaded image, keeping the facial features exactly the same. He is dressed in a striking red blazer with white buttons, paired with a white shirt that is open at the chest, He wears black fitted trousers with a red leather belt that matches the blazer In his left hand, he carries a sleek black folder, adding a professional touch. The background is a softly blurred elegant architectural interior with soft ambient lighting, creating depth and focus on the subject. The lighting highlights the texture of the fabric, the glossiness the hair, and the calm, determined expression on his face. The overall mood is cinematic, stylish, bold, and powerful", tags: ["sci-fi", "professional"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/33.jpg?raw=true", gender: "men" },
+            { id: 34, category: "portrait", title: "GoPro Celebrity Madness", prompt: "Wide-angle GoPro-style shot from a high, symmetrical bird's-eye perspective. [Reference man from the photo] stands in black sunglasses and a sleek black suit, looking casually into the camera while holding his face with his index finger and thumb in a confident gesture.Around him, glamorous supermodels and enthusiastic fans reach out, touching his arms and shoulders, enhancing his magnetic presence. Below the frame, P paparazzi flashes and crowded journalists with cameras create a chaotic yet dramatic atmosphere.The ultra-wide GoPro lens exaggerates erspective, making the scene feel immersive, dynamic, and larger-than-life like a raw, energetic capture from the middle S celebrity madness.", tags: ["cinematic", "gopro"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/34.jpg?raw=true", gender: "men" },
+            { id: 35, category: "landscape", title: "Snowy Horse Rider", prompt: "Uitra realistic, 8K resolution cinematic image of a person crouching beside a owerful black horse in a snow-covered mountainous landscape. Face with the face from the uploaded image, keeping the facial features exactly the same. wavy hair, and wears dark sunglasses, a cozy black sweater, grey cargo pants, and black boots. He crouches with one knee bent, holding the reins of the horse with a relaxed yet confident posture. The horse is muscular, with a glossy jet-black coat, flowing mane, and expressive eyes, wearing a simple leather halter. Snow blankets the ground with footprints and scattered rocks visible. In the background, soft-focus snow-covered hills, pine trees, and distant mountain peaks stretch under a Clear blue sky Snowflakes gently fall around them, adding depth and softness to the scene. The lighting is soft and natural, highlighting details like the texture of the snow, fabric folds, and hair strands. The overall mood is calm, adventurous, and majestic, evoking a sense of freedom and harmony with nature.", tags: ["adventure", "horse"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/35.jpg?raw=true", gender: "men" },
+            { id: 27, category: "sci-fi", title: "Fortuner Foggy Mountain", prompt: "Produce a clean, realistic edit of the man exact same face and hairstyle from the uploaded photo.He is casually seated on the hood of a black Toyota Fortuner with the plate Yasin-Ai.His outfit is a simple oversized black-and-white baggy shirt paired with black-and-white sneakers. His left hand rests in his pocket while his right hand rests lightly on his knee. Behind him, mountains are partially hidden under a veil of thick fog.", tags: ["sci-fi", "car"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p26.jpg?raw=true", gender: "men" },
+            { id: 26, category: "sci-fi", title: "Rooftop Skyline Night", prompt: "Retro vintage grainy but bright image of reference picture (20s) standing on a sleek, high-rise rooftop at night, overlooking a sprawling city skyline. He's wearing a tailored dark coat over a black turtleneck, with a subtle smirk and hands in pockets. The neon glow of distant buildings and soft, ambient architectural lighting create sophisticated highlights and deep shadows. The mood is enigmatic and powerful, evoking urban luxury and solitude. Prominent film grain, 4:5 aspect ratio.", tags: ["sci-fi", "rooftop"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p1%20(2).png?raw=true", gender: "men" },
+            { id: 2, category: "portrait", title: "Art Gallery Intrigue", prompt: "bright image of reference picture (20s-30s) with a discerning expression, observing a modern art piece in a dimly lit, high-end art gallery. He is dressed in a contemporary dark blazer and a collared shirt, holding a glass of wine. The dramatic spotlight on the artwork casts subtle, artistic shadows across his face and the polished concrete floor. The mood is cultured and intriguing, blending art appreciation with an air of mystery. Prominent film grain, 4:5 aspect ratio.", tags: ["cinematic", "gallery"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p2.png?raw=true", gender: "men" },
+            { id: 3, category: "landscape", title: "Night Drive Confidence", prompt: "bright image of reference picture (30s) seated in the driver's seat of a luxurious, dark-colored sports car at night. His hands are casually on the steering wheel, and his face is illuminated by the soft, colored glow of the dashboard lights and passing city streetlights. He's wearing a dark, open-collared shirt, with a relaxed yet focused expression. The mood is cool and confident, evoking a sense of nocturnal adventure. Prominent film grain, 4:5 aspect ratio.", tags: ["forest", "car"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p3.png?raw=true", gender: "men" },
+            { id: 4, category: "landscape", title: "Lounge Bar Allure", prompt: "bright image of reference picture (30s) seated at a dimly lit bar in an exclusive, modern lounge, a half-empty cocktail glass on the polished counter in front of him. He is dressed in a dark, impeccably styled suit, looking directly at the camera with an intense, captivating gaze. Subtly colored ambient lighting (e.g., deep blues or purples) creates a sophisticated atmosphere. The mood is alluring and seductive, evoking a high-stakes, glamorous setting. Prominent film grain, 4:5 aspect ratio", tags: ["bar", "glamorous"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p3.png?raw=true", gender: "men" },
+            { id: 5, category: "sci-fi", title: "Market Wanderlust", prompt: "Retro vintage grainy but bright image of reference picture (20s) with a carefree, adventurous smile, dressed in loose, earthy clothing with a well-worn backpack. He's standing on a bustling street in an exotic, sun-drenched marketplace, surrounded by colorful textiles, spices, and local vendors. The lighting is warm and vibrant, with dappled sunlight and deep shadows from awnings. The mood is energetic and curious, evoking a sense of wanderlust and cultural immersion. Prominent film grain, 4:5 aspect ratio.", tags: ["sci-fi", "travel"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p5.png?raw=true", gender: "men" },
+            { id: 21, category: "sci-fi", title: "Film Noir PI Office", prompt: "Retro vintage grainy but bright image of reference picture (30s) with a stern, world-weary expression, wearing a rumpled trench coat and fedora. He's seated in a dimly lit, smoky private investigator's office, with rain streaking down the large window behind him. A half-empty whiskey glass and scattered papers are on his desk. The lighting is high contrast, with dramatic shadows and a single shaft of light cutting through the gloom. The mood is gritty and mysterious, evoking classic film noir. Prominent film grain, 4:5 aspect ratio.", tags: ["sci-fi", "noir"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p6.png?raw=true", gender: "men" },
+            { id: 7, category: "sci-fi", title: "Scholarly Library", prompt: "Retro vintage grainy but bright image of reference picture (20s) with a thoughtful, scholarly expression, wearing tweed jacket and spectacles. He's in a grand, oak-paneled library, surrounded by towering bookshelves filled with old books. He holds an open book in his hands, gazing out a large, arched window. The lighting is soft and natural, with beams of light illuminating dust motes in the air. The mood is intellectual and contemplative, evoking wisdom and quiet study. Prominent film grain, 4:5 aspect ratio.", tags: ["sci-fi", "library"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p7.png?raw=true", gender: "men" },
+            { id: 10, category: "sci-fi", title: "Sunset Beach Proposal", prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) on a deserted beach at sunset, on bended knee, presenting a ring to a partner. The sky is ablaze with vibrant oranges and pinks, reflected on the wet sand as waves gently lap the shore. The mood is emotional and hopeful, capturing a momentous, heartfelt proposal. Prominent film grain, 4:5 aspect ratio.", tags: ["sci-fi", "proposal"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p10.png?raw=true", gender: "men" },
+            { id: 11, category: "sci-fi", title: "Graffiti Alley Rebel", prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) standing confidently against a graffiti-covered brick wall in a narrow alleyway. He is wearing a stylish leather jacket, dark jeans, and a casual t-shirt, with one hand in his pocket and a slightly defiant expression. Harsh, directional light from an unseen streetlamp casts long, dramatic shadows. The mood is cool and rebellious, evoking a modern urban vibe. Prominent film grain, 4:5 aspect ratio.", tags: ["sci-fi", "rebel"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p11.png?raw=true", gender: "men" },
+            { id: 12, category: "sci-fi", title: "Minimalist Suit", prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) posing with understated elegance in a minimalist, open-plan architectural space with large concrete walls and floor-to-ceiling windows. He is dressed in a well-tailored, monochromatic suit, looking thoughtfully out a window. Soft, diffused natural light illuminates one side of his face, creating subtle highlights and shadows. The mood is sophisticated and contemplative, evoking a clean, modern aesthetic. Prominent film grain, 4:5 aspect ratio", tags: ["sci-fi", "suit"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p12.png?raw=true", gender: "men" },
+            { id: 13, category: "sci-fi", title: "Artistic Shadows", prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) with an artistic, slightly melancholic expression, standing in a studio with large windows. Complex, geometric shadows from window frames or blinds fall across his face and body. He is wearing a loose-fitting, artistic shirt and dark trousers, with a subtle prop like a small sculpture or a sketchbook in his hand. The lighting is high contrast, focusing on the interplay of light and shadow. The mood is thoughtful and visually striking, emphasizing artistic composition. Prominent film grain, 4:5 aspect ratio.", tags: ["sci-fi", "artistic"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p13.png?raw=true", gender: "men" },
+            { id: 14, category: "sci-fi", title: "Classic Car Cool", prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) leaning casually against a classic vintage car (e.g., a '60s Mustang) on a quiet, sun-drenched suburban street. He is dressed in a crisp white shirt, rolled-up sleeves, and chinos, with a confident, easy smile. The late afternoon sun casts warm, long shadows. The mood is timeless and effortlessly cool, evoking a classic American dream aesthetic. Prominent film grain, 4:5 aspect ratio.", tags: ["sci-fi", "vintage-car"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p14.png?raw=true", gender: "men" },
+            { id: 15, category: "sci-fi", title: "Wildflower Tender", prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) gently plucking a single delicate wildflower from a vibrant meadow, with a tender, focused expression. He is dressed in soft, light-colored linen, and the setting sun casts a warm, ethereal glow over the field. The mood is serene and appreciative of nature's beauty. Prominent film grain, 4:5 aspect ratio.", tags: ["sci-fi", "nature"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p15.png?raw=true", gender: "men" },
+            { id: 16, category: "sci-fi", title: "Secret Garden Rose", prompt: "Retro vintage grainy but bright image of reference picture (20s-30s) reaching through overgrown foliage in a forgotten, walled secret garden to carefully pick a blooming rose. His expression is one of wonder and slight mischief. He is wearing vintage-inspired workwear or a simple shirt with rolled-up sleeves. Dappled sunlight breaks through the dense canopy, creating dramatic light and shadow. The mood is mysterious and enchanting, evoking hidden beauty. Prominent film grain, 4:5 aspect ratio.", tags: ["sci-fi", "garden"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p16.png?raw=true", gender: "men" },
+            { id: 17, category: "sci-fi", title: "Windswept Coastline", prompt: "Retro vintage grainy but bright image of reference picture (20s) standing by a dramatic, windswept coastline, thoughtfully holding a single, resilient bloom (e.g., a thistle or sea poppy) against the backdrop of a vast, moody ocean. His expression is artistic and introspective. He is wearing a simple, open-collared shirt, perhaps with a slight breeze catching it. The lighting is dramatic and natural, with hints of a stormy sky or a powerful sunset. The mood is poetic and symbolic, linking human emotion with wild nature. Prominent film grain, 4:5 aspect ratio.", tags: ["sci-fi", "ocean"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p17.png?raw=true", gender: "men" },
+            { id: 18, category: "portrait", title: "Cliff Edge Joy", prompt: "Retro vintage grainy but bright image of a reference picture (20s) with wind-blown hair and a joyful, uninhibited smile, caught mid-laugh. He's standing on a cliff edge overlooking a vast, stormy ocean, with the wind whipping his casual shirt. His arms are outstretched, embracing the moment. The lighting is dramatic, with moody clouds and glimpses of golden sunlight breaking through. Focus on the raw emotion and the powerful, romanticized natural environment. High contrast, strong film grain, 4:5 aspect ratio.", tags: ["cinematic", "cliff"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p18.png?raw=true", gender: "men" },
+            { id: 19, category: "fantasy", title: "Golden Field Solitude", prompt: "Retro vintage grainy but bright image of reference pricture (20s) with a weathered face and kind eyes, wearing a simple flannel shirt and work pants. He's standing alone in a vast, golden field during late autumn, gazing out towards the horizon. A lone, gnarled tree is in the distance. The lighting is warm with a golden hour glow, casting long, dramatic shadows. The mood is serene and introspective, evoking a sense of enduring peace and connection to nature. Prominent film grain, 4:5 aspect ratio.", tags: ["fantasy", "field"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p19.png?raw=true", gender: "men" },
+            { id: 20, category: "landscape", title: "Passionate Artist Studio", prompt: "Retro vintage grainy but bright image of reference pricture (20s-30s) with paint-splattered hands and an intense, focused expression. He's in his messy studio, bathed in the dramatic, directional light from a large window. He holds a paintbrush, looking at a half-finished canvas. The room is filled with creative chaos, art supplies, and warm, dusty sunlight creating beautiful highlights and deep shadows. Evokes the raw energy of creation, a moody, passionate artistic spirit. Image size 4:5.", tags: ["artist", "studio"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p20.png?raw=true", gender: "men" },
+            { id: 22, category: "sci-fi", title: "Proud Craftsman Sunset", prompt: "Retro vintage grainy but bright image of reference picture (20s) with a strong, determined gaze, covered in honest sweat and wearing sturdy work overalls. He's on a construction site, silhouetted against a setting sun, taking a moment to survey his work. Tools are scattered around him, and the framework of a building rises in the background. The lighting is warm and dusty, with a dramatic glow from the low sun. The mood is resilient and proud, celebrating hard work and craftsmanship. Prominent film grain, 4:5 aspect ratio.", tags: ["sci-fi", "craftsman"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p21.png?raw=true", gender: "men" },
+            
+            // COUPLES PROMPTS (gender: "couple")
+            { id: 8, category: "sci-fi", title: "Fireside Couple", prompt: "Retro vintage grainy but bright image of reference picture (30s-40s) cuddled with a partner on a plush rug in front of a roaring fireplace, sipping from mugs. Soft blankets are draped around them, and the room is filled with warm, flickering light and deep, inviting shadows. The mood is intimate and comforting, evoking quiet domestic bliss. Prominent film grain, 4:5 aspect ratio.", tags: ["sci-fi", "couple"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p8.png?raw=true", gender: "couple" },
+            { id: 9, category: "sci-fi", title: "Rainy City Romance", prompt: "Retro vintage grainy but bright image of reference picture (20s) sharing an umbrella with a partner on a bustling, rain-slicked city street at dusk. They are laughing, eyes locked, with the city lights blurring into colorful bokeh in the background. Reflections shimmer on the wet pavement. The mood is spontaneous and joyful, evoking an unexpected urban romance. Prominent film grain, 4:5 aspect ratio.", tags: ["sci-fi", "romance"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/p9.png?raw=true", gender: "couple" },
+        ];
+
+        let currentPrompts = []; 
+
+        // Function to copy the prompt text
+        function copyPrompt(button, promptText) {
+            navigator.clipboard.writeText(promptText).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'PROMPT COPIED! ✅';
+                button.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                button.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                    button.classList.add('bg-blue-500', 'hover:bg-blue-600');
+                }, 1500);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        }
+
+        // Function to load prompts into UI (with enhanced styling)
+        function loadPrompts(promptsToDisplay, title) {
+            const container = document.getElementById("promptContainer");
+            const galleryTitle = document.getElementById("gallery-title");
+            
+            // Clear existing content
+            container.innerHTML = "";
+            galleryTitle.textContent = title;
+
+            if (promptsToDisplay.length === 0) {
+                container.innerHTML = `<p class="text-center text-gray-500 text-2xl col-span-full py-20">No matching prompts found.</p>`;
+                return;
+            }
+
+            promptsToDisplay.forEach(prompt => {
+                const card = document.createElement("div");
+                // Attractive card styling with shadow, rounded corners, and lift on hover
+                card.className = "card bg-card-bg-light rounded-2xl overflow-hidden flex flex-col transition duration-300 transform hover:scale-[1.03] shadow-xl hover:shadow-light-glow";
+
+                // Set color/label based on gender for card tags
+                let genderLabel = '';
+                let genderTagClass = '';
+                if (prompt.gender === 'girl') {
+                    genderLabel = 'FEMALE';
+                    genderTagClass = 'bg-accent-fuchsia text-bg-dark shadow-lg';
+                } else if (prompt.gender === 'men') {
+                    genderLabel = 'MALE';
+                    genderTagClass = 'bg-accent-sky text-bg-dark shadow-lg';
+                } else if (prompt.gender === 'couple') {
+                    genderLabel = 'DUO';
+                    genderTagClass = 'bg-purple-500 text-white shadow-lg';
+                }
+                
+                // Escape quotes for the copy function parameter
+                const safePrompt = prompt.prompt.replace(/'/g, "\\'").replace(/"/g, '\\"');
+
+                card.innerHTML = `
+                    <div class="aspect-[4/5] bg-gray-900 flex items-center justify-center relative image-container">
+                        ${prompt.imageUrl 
+                            ? `<img src="${prompt.imageUrl}" alt="${prompt.title}" class="w-full h-full object-cover transition duration-300 transform scale-100 opacity-90">` 
+                            : `<span class="text-gray-500 text-xl">NO VISUAL DATA</span>`
+                        }
+                        <span class="absolute top-4 left-4 px-4 py-1 text-xs font-bold uppercase tracking-wider rounded-full ${genderTagClass}">
+                            ${genderLabel}
+                        </span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-extrabold mb-2 text-gray-100">${prompt.title}</h3>
+                        <div class="glass-effect p-3 mb-4 rounded-lg flex-grow">
+                             <p class="text-gray-300 text-sm overflow-hidden max-h-12 leading-snug">${prompt.prompt}</p>
+                        </div>
+                       
+                        <div class="flex flex-wrap gap-2 mb-5 glass-effect p-2 rounded-lg">
+                            ${prompt.tags.map(tag => 
+                                `<span class="bg-transparent text-gray-400 px-2 py-0.5 rounded-full text-xs font-medium border border-gray-600">#${tag}</span>`
+                            ).join("")}
+                        </div>
+                        
+                        <button onclick="copyPrompt(this, '${safePrompt}')" class="mt-auto w-full bg-blue-500 text-white font-extrabold py-3 rounded-xl tracking-wide shadow-md hover:bg-blue-600 transition duration-300">
+                            Copy Prompt 📋
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Function to filter and display prompts
+        function filterPrompts(gender) {
+            let filteredList = [];
+            let title = "";
+            let ringColor = '';
+
+            // Reset button active states
+            document.querySelectorAll('button[id^="filter-"]').forEach(btn => {
+                btn.classList.remove('ring-4', 'ring-offset-4', 'ring-opacity-50', 'ring-accent-sky', 'ring-accent-fuchsia', 'ring-offset-bg-dark');
+            });
+
+            if (gender === 'men') {
+                filteredList = allPrompts.filter(p => p.gender === 'men' || p.gender === 'couple');
+                title = "🌌 MALE SUBJECTS & DUOS (Sky Blue Focus)";
+                ringColor = 'ring-accent-sky';
+            } else if (gender === 'girl') {
+                filteredList = allPrompts.filter(p => p.gender === 'girl' || p.gender === 'couple');
+                title = "✨ FEMALE SUBJECTS & DUOS (Fuchsia Focus)";
+                ringColor = 'ring-accent-fuchsia';
+            }
+            
+            // Apply ring style to the active button
+            if (document.getElementById(`filter-${gender}`)) {
+                document.getElementById(`filter-${gender}`).classList.add('ring-4', 'ring-offset-4', ringColor, 'ring-opacity-50', 'ring-offset-bg-dark');
+            }
+
+            currentPrompts = filteredList;
+            loadPrompts(currentPrompts, title);
+        }
+        
+        // 🔑 Automatically load Men's Prompts on page load
+        window.onload = function() {
+            filterPrompts('men');
+        };
+    </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
