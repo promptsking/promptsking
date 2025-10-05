@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atmospheric Prompt Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CDPG2RXQPF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-CDPG2RXQPF');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CDPG2RXQPF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
+        gtag('config', 'G-CDPG2RXQPF');
+    </script>
     <script>
         tailwind.config = {
             theme: {
@@ -32,15 +31,6 @@
                 }
             }
         }
-    </script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CDPG2RXQPF"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-CDPG2RXQPF');
     </script>
     
     <style>
@@ -66,7 +56,7 @@
 
     <header class="bg-gray-900 text-white p-6 shadow-2xl border-b border-gray-700">
         <h1 class="text-4xl font-extrabold text-center tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-fuchsia-400">
-            Ai IMAGES PROMPTS 
+            Ai IMAGE PROMPTS
         </h1>
     </header>
 
@@ -74,10 +64,10 @@
         
         <div class="mb-12 flex justify-center space-x-8">
             <button onclick="filterPrompts('men')" class="px-12 py-4 text-xl font-bold rounded-xl shadow-lg transition duration-300 transform hover:scale-105 bg-accent-sky hover:bg-sky-500 text-bg-dark" id="filter-men">
-                🤵 MALE 
+                🤵 MALE SUBJECTS
             </button>
             <button onclick="filterPrompts('girl')" class="px-12 py-4 text-xl font-bold rounded-xl shadow-lg transition duration-300 transform hover:scale-105 bg-accent-fuchsia hover:bg-fuchsia-500 text-bg-dark" id="filter-girl">
-                 FEMALE 
+                🌸 FEMALE SUBJECTS
             </button>
         </div>
         
@@ -90,7 +80,7 @@
     </main>
 
     <script>
-        // Prompt Data (Kept the same for functionality)
+        // Prompt Data
         const allPrompts = [
             // WOMEN'S PROMPTS (gender: "girl")
             { id: 36, category: "sci-fi", title: "Rustic Sari Portrait", prompt: "A Hyper-realistic 8k portrait of a young woman [use same face as uploaded photo] sitting barefoot on the edge of a rustic boat in calm blue waters. Lotuses all over the water, romantically environment. Her head tilted side in a gentle smile. She's dressed in a beautiful sari, with a rich red blouse embroidered with a gold floral pattern. The skirt of the sari is a red, with intricate golden embroidery at the hem. Her hair is pulled up in a relaxed bun, and she wears stunning gold earrings that complement her traditional look. The warm, soft lighting create a serene and elegant atmosphere.", tags: ["sci-fi", "portrait"], imageUrl: "https://github.com/promptsking/promptsking/blob/main/36.jpg?raw=true", gender: "girl" },
@@ -255,4 +245,3 @@
 
 </body>
 </html>
-
